@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DS Fitness Ecity | Premium Gym – Electronic City, Bengaluru</title>
+<meta name="description" content="DS Fitness Ecity – Premium gym in Electronic City, Bengaluru. HIIT, CrossFit, Kickboxing, Personal Training & more. 4.9★ rated, 500+ members."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  /* ─── CSS VARIABLES ─────────────────────────────── */
+  :root{
+    --black:#060809;
+    --dark:#0d1117;
+    --card:#111820;
+    --border:rgba(255,255,255,.07);
+    --green:#b5ff3e;
+    --green2:#8ddb2b;
+    --red:#ff3e3e;
+    --white:#f0f4f8;
+    --muted:#7a8899;
+    --font-head:'Bebas Neue',sans-serif;
+    --font-cond:'Barlow Condensed',sans-serif;
+    --font-body:'Barlow',sans-serif;
+    --radius:14px;
+    --transition:.35s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ─── RESET ─────────────────────────────────────── */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;line-height:1.6}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+
+  /* ─── SCROLLBAR ─────────────────────────────────── */
+  ::-webkit-scrollbar{width:5px}
+  ::-webkit-scrollbar-track{background:var(--dark)}
+  ::-webkit-scrollbar-thumb{background:var(--green);border-radius:99px}
+
+  /* ─── UTILITY ───────────────────────────────────── */
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  .section-tag{display:inline-block;font-family:var(--font-cond);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);background:rgba(181,255,62,.08);border:1px solid rgba(181,255,62,.2);padding:5px 16px;border-radius:99px;margin-bottom:16px}
+  .section-title{font-family:var(--font-cond);font-size:clamp(2.2rem,5vw,4rem);font-weight:900;text-transform:uppercase;line-height:1.05;letter-spacing:.02em}
+  .section-title span{color:var(--green)}
+  .section-sub{color:var(--muted);font-size:1.05rem;max-width:540px;margin-top:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 30px;border-radius:8px;font-family:var(--font-cond);font-size:1.05rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:none;transition:var(--transition)}
+  .btn-primary{background:var(--green);color:#0a0a0a}
+  .btn-primary:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 10px 40px rgba(181,255,62,.3)}
+  .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+  .btn-outline:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+  /* ─── REVEAL ANIMATION ──────────────────────────── */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+  .reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .7s ease,transform .7s ease}
+  .reveal-left.visible{opacity:1;transform:none}
+  .reveal-right{opacity:0;transform:translateX(50px);transition:opacity .7s ease,transform .7s ease}
+  .reveal-right.visible{opacity:1;transform:none}
+  .delay-1{transition-delay:.1s}
+  .delay-2{transition-delay:.2s}
+  .delay-3{transition-delay:.3s}
+  .delay-4{transition-delay:.4s}
+
+  /* ─── NOISE OVERLAY ─────────────────────────────── */
+  .noise::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1}
+
+  /* ══════════════════════════════════════════════════
+     NAV
+  ══════════════════════════════════════════════════ */
+  #nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:18px 0;transition:background .4s,padding .4s,backdrop-filter .4s}
+  #nav.scrolled{background:rgba(6,8,9,.85);backdrop-filter:blur(18px);padding:12px 0;border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:var(--font-head);font-size:1.8rem;letter-spacing:.04em}
+  .nav-logo span{color:var(--green)}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-family:var(--font-cond);font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:color .25s}
+  .nav-links a:hover{color:var(--white)}
+  .nav-cta{font-size:.85rem;padding:10px 22px}
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .nav-hamburger span{width:24px;height:2px;background:var(--white);border-radius:99px;transition:var(--transition)}
+  .mobile-menu{display:none;position:fixed;inset:0;background:var(--black);z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{font-family:var(--font-cond);font-size:2rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--white);transition:color .25s}
+  .mobile-menu a:hover{color:var(--green)}
+
+  /* ══════════════════════════════════════════════════
+     HERO
+  ══════════════════════════════════════════════════ */
+  #hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg-img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.35) saturate(1.1)}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,8,9,.9) 40%,rgba(181,255,62,.04) 100%)}
+  .hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(181,255,62,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(181,255,62,.04) 1px,transparent 1px);background-size:60px 60px}
+  .hero-content{position:relative;z-index:2;max-width:780px}
+  .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .hero-eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(181,255,62,.6)}70%{box-shadow:0 0 0 14px rgba(181,255,62,0)}}
+  .hero-eyebrow-text{font-family:var(--font-cond);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
+  .hero-h1{font-family:var(--font-head);font-size:clamp(3.5rem,9vw,8rem);line-height:.95;text-transform:uppercase;letter-spacing:.02em;margin-bottom:24px}
+  .hero-h1 .line2{color:var(--green);display:block;-webkit-text-stroke:2px var(--green);color:transparent}
+  .hero-sub{font-size:1.15rem;color:rgba(240,244,248,.7);max-width:480px;margin-bottom:36px;line-height:1.7}
+  .hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+  .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+  .stat-item{display:flex;flex-direction:column}
+  .stat-num{font-family:var(--font-head);font-size:2.4rem;color:var(--white);line-height:1}
+  .stat-num span{color:var(--green)}
+  .stat-label{font-size:.78rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+  .hero-badge{position:absolute;right:6%;bottom:12%;z-index:2;background:rgba(13,17,23,.8);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .hero-badge-stars{color:var(--green);font-size:1rem;letter-spacing:3px}
+  .hero-badge-num{font-family:var(--font-head);font-size:2rem;color:var(--white)}
+  .hero-badge-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .scroll-indicator{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--green),transparent);animation:scrollDown 2s ease-in-out infinite}
+  @keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  .scroll-text{font-family:var(--font-cond);font-size:.7rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+
+  /* ══════════════════════════════════════════════════
+     ABOUT
+  ══════════════════════════════════════════════════ */
+  #about{padding:120px 0;position:relative}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about-images{position:relative;height:520px}
+  .about-img-main{width:72%;height:420px;object-fit:cover;border-radius:var(--radius);position:absolute;top:0;left:0;border:2px solid var(--border)}
+  .about-img-sec{width:55%;height:280px;object-fit:cover;border-radius:var(--radius);position:absolute;bottom:0;right:0;border:2px solid var(--border)}
+  .about-img-badge{position:absolute;bottom:120px;left:48%;background:var(--green);color:#0a0a0a;padding:14px 18px;border-radius:var(--radius);font-family:var(--font-cond);font-weight:700;font-size:1rem;text-align:center;min-width:110px;box-shadow:0 8px 30px rgba(181,255,62,.4)}
+  .about-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+  .about-feat{display:flex;align-items:center;gap:10px;font-size:.95rem;color:rgba(240,244,248,.8)}
+  .about-feat-icon{width:28px;height:28px;border-radius:6px;background:rgba(181,255,62,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+
+  /* ══════════════════════════════════════════════════
+     PROGRAMS
+  ══════════════════════════════════════════════════ */
+  #programs{padding:120px 0;background:var(--dark)}
+  .programs-header{text-align:center;margin-bottom:64px}
+  .programs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .prog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;cursor:pointer;transition:var(--transition);group:true}
+  .prog-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(181,255,62,.06),transparent);opacity:0;transition:opacity .35s}
+  .prog-card:hover{transform:translateY(-6px);border-color:rgba(181,255,62,.3);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .prog-card:hover::before{opacity:1}
+  .prog-card-accent{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+  .prog-card:hover .prog-card-accent{transform:scaleX(1)}
+  .prog-icon{width:52px;height:52px;background:rgba(181,255,62,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px;transition:background .3s}
+  .prog-card:hover .prog-icon{background:rgba(181,255,62,.2)}
+  .prog-name{font-family:var(--font-cond);font-size:1.35rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+  .prog-desc{font-size:.9rem;color:var(--muted);line-height:1.6}
+  .prog-arrow{position:absolute;bottom:20px;right:20px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(181,255,62,.3);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--green);opacity:0;transform:scale(.7);transition:var(--transition)}
+  .prog-card:hover .prog-arrow{opacity:1;transform:scale(1)}
+
+  /* ══════════════════════════════════════════════════
+     WHY CHOOSE US
+  ══════════════════════════════════════════════════ */
+  #why{padding:120px 0}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .why-features{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .why-feat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:var(--transition)}
+  .why-feat:hover{border-color:rgba(181,255,62,.25);transform:translateY(-3px)}
+  .why-feat-icon{font-size:1.6rem;margin-bottom:12px}
+  .why-feat-title{font-family:var(--font-cond);font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:6px}
+  .why-feat-desc{font-size:.85rem;color:var(--muted);line-height:1.55}
+  .why-visual{position:relative;border-radius:20px;overflow:hidden;height:520px;background:var(--card);border:1px solid var(--border)}
+  .why-visual-inner{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(1.2)}
+  .why-visual-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,8,9,.9) 0%,transparent 50%)}
+  .why-visual-text{position:absolute;bottom:28px;left:28px;right:28px}
+  .why-quote{font-family:var(--font-cond);font-size:1.5rem;font-weight:700;line-height:1.2;margin-bottom:8px}
+  .why-author{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+  /* ══════════════════════════════════════════════════
+     TESTIMONIALS
+  ══════════════════════════════════════════════════ */
+  #testimonials{padding:120px 0;background:var(--dark);overflow:hidden}
+  .testi-header{text-align:center;margin-bottom:64px}
+  .testi-track{display:flex;gap:24px;animation:scrollTrack 28s linear infinite}
+  @keyframes scrollTrack{to{transform:translateX(-50%)}}
+  .testi-wrap{overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 8%,black 92%,transparent)}
+  .testi-card{flex-shrink:0;width:320px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;position:relative}
+  .testi-quote{font-size:2.5rem;line-height:1;color:var(--green);font-family:Georgia,serif;margin-bottom:10px}
+  .testi-text{font-size:.95rem;color:rgba(240,244,248,.8);line-height:1.65;margin-bottom:20px}
+  .testi-footer{display:flex;align-items:center;gap:12px}
+  .testi-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green2));display:flex;align-items:center;justify-content:center;font-family:var(--font-cond);font-size:1.1rem;font-weight:700;color:#0a0a0a;flex-shrink:0}
+  .testi-name{font-family:var(--font-cond);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+  .testi-stars{font-size:.8rem;color:var(--green);letter-spacing:2px}
+
+  /* ══════════════════════════════════════════════════
+     MEMBERSHIP
+  ══════════════════════════════════════════════════ */
+  #membership{padding:120px 0}
+  .membership-header{text-align:center;margin-bottom:64px}
+  .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+  .plan-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;transition:var(--transition)}
+  .plan-card.featured{background:linear-gradient(145deg,rgba(181,255,62,.08),rgba(181,255,62,.02));border-color:var(--green);transform:scale(1.04)}
+  .plan-card:hover{transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .plan-card.featured:hover{transform:scale(1.04) translateY(-6px)}
+  .plan-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:#0a0a0a;font-family:var(--font-cond);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 18px;border-radius:99px}
+  .plan-name{font-family:var(--font-cond);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:12px}
+  .plan-price{font-family:var(--font-head);font-size:3.5rem;line-height:1;margin-bottom:4px}
+  .plan-price sub{font-family:var(--font-body);font-size:1rem;font-weight:400}
+  .plan-price sup{font-size:1.5rem}
+  .plan-period{font-size:.85rem;color:var(--muted);margin-bottom:28px}
+  .plan-divider{height:1px;background:var(--border);margin-bottom:24px}
+  .plan-features{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+  .plan-feat{display:flex;align-items:center;gap:10px;font-size:.92rem}
+  .plan-feat-check{color:var(--green);font-size:.9rem;flex-shrink:0}
+  .plan-feat-x{color:var(--muted);font-size:.9rem;flex-shrink:0}
+  .plan-feat.disabled{color:var(--muted)}
+  .plan-cta{width:100%;text-align:center;justify-content:center}
+  .plan-card.featured .plan-cta{background:var(--green);color:#0a0a0a}
+
+  /* ══════════════════════════════════════════════════
+     GALLERY
+  ══════════════════════════════════════════════════ */
+  #gallery{padding:120px 0;background:var(--dark)}
+  .gallery-header{text-align:center;margin-bottom:56px}
+  .gallery-masonry{columns:3;gap:16px}
+  .gallery-item{break-inside:avoid;margin-bottom:16px;border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
+  .gallery-item img{width:100%;display:block;transition:transform .5s ease,filter .5s ease}
+  .gallery-item:hover img{transform:scale(1.06);filter:brightness(.7) saturate(1.3)}
+  .gallery-item-overlay{position:absolute;inset:0;background:rgba(181,255,62,.1);opacity:0;transition:opacity .4s;display:flex;align-items:center;justify-content:center;font-size:2rem}
+  .gallery-item:hover .gallery-item-overlay{opacity:1}
+
+  /* ══════════════════════════════════════════════════
+     TRAINERS
+  ══════════════════════════════════════════════════ */
+  #trainers{padding:120px 0}
+  .trainers-header{text-align:center;margin-bottom:64px}
+  .trainers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .trainer-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+  .trainer-card:hover{transform:translateY(-6px);border-color:rgba(181,255,62,.25)}
+  .trainer-img{width:100%;height:220px;object-fit:cover;object-position:top;filter:grayscale(30%);transition:filter .4s}
+  .trainer-card:hover .trainer-img{filter:none}
+  .trainer-info{padding:20px}
+  .trainer-name{font-family:var(--font-cond);font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .trainer-role{font-size:.82rem;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+  .trainer-cert{font-size:.82rem;color:var(--muted)}
+  .trainer-socials{display:flex;gap:10px;margin-top:14px}
+  .trainer-social{width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:background .25s}
+  .trainer-social:hover{background:var(--green);color:#0a0a0a}
+
+  /* ══════════════════════════════════════════════════
+     BMI CALCULATOR
+  ══════════════════════════════════════════════════ */
+  #bmi{padding:120px 0;background:var(--dark)}
+  .bmi-wrap{max-width:600px;margin:0 auto;text-align:center}
+  .bmi-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;margin-top:40px}
+  .bmi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+  .bmi-field{display:flex;flex-direction:column;gap:8px;text-align:left}
+  .bmi-field label{font-family:var(--font-cond);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .bmi-field input{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--white);font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color .25s;width:100%}
+  .bmi-field input:focus{border-color:var(--green)}
+  .bmi-result{margin-top:24px;padding:20px;background:rgba(181,255,62,.06);border:1px solid rgba(181,255,62,.15);border-radius:12px;display:none}
+  .bmi-result.show{display:block}
+  .bmi-num{font-family:var(--font-head);font-size:3.5rem;color:var(--green)}
+  .bmi-category{font-family:var(--font-cond);font-size:1.2rem;color:var(--white);text-transform:uppercase;letter-spacing:.05em}
+  .bmi-tip{font-size:.85rem;color:var(--muted);margin-top:6px}
+
+  /* ══════════════════════════════════════════════════
+     CONTACT
+  ══════════════════════════════════════════════════ */
+  #contact{padding:120px 0}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .contact-info{display:flex;flex-direction:column;gap:24px}
+  .contact-item{display:flex;gap:16px;align-items:flex-start}
+  .contact-icon{width:46px;height:46px;border-radius:10px;background:rgba(181,255,62,.1);border:1px solid rgba(181,255,62,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+  .contact-label{font-family:var(--font-cond);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .contact-value{font-size:.95rem;color:var(--white)}
+  .contact-form{display:flex;flex-direction:column;gap:14px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form-field{display:flex;flex-direction:column;gap:6px}
+  .form-field label{font-family:var(--font-cond);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .form-field input,.form-field textarea{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px 16px;color:var(--white);font-family:var(--font-body);font-size:.95rem;outline:none;transition:border-color .25s;resize:none;width:100%}
+  .form-field input:focus,.form-field textarea:focus{border-color:var(--green)}
+  .wa-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:#25d366;border-radius:8px;font-family:var(--font-cond);font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;cursor:pointer;border:none;transition:var(--transition);width:100%;justify-content:center;margin-top:6px}
+  .wa-btn:hover{background:#128c4a;transform:translateY(-2px)}
+  .map-frame{margin-top:32px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
+
+  /* ══════════════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════════════ */
+  #footer{background:var(--dark);border-top:1px solid var(--border);padding:64px 0 32px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+  .footer-brand p{font-size:.9rem;color:var(--muted);margin-top:12px;max-width:280px;line-height:1.65}
+  .footer-socials{display:flex;gap:10px;margin-top:20px}
+  .footer-social{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:background .25s}
+  .footer-social:hover{background:var(--green);color:#0a0a0a}
+  .footer-col-title{font-family:var(--font-cond);font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white);margin-bottom:18px}
+  .footer-links{display:flex;flex-direction:column;gap:10px}
+  .footer-links a{font-size:.88rem;color:var(--muted);transition:color .25s}
+  .footer-links a:hover{color:var(--green)}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .footer-copy{font-size:.82rem;color:var(--muted)}
+  .footer-copy span{color:var(--green)}
+
+  /* ══════════════════════════════════════════════════
+     POPUP
+  ══════════════════════════════════════════════════ */
+  .popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+  .popup-overlay.open{display:flex}
+  .popup{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;max-width:480px;width:100%;position:relative;animation:popIn .4s cubic-bezier(.34,1.56,.64,1)}
+  @keyframes popIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+  .popup-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);border:none;color:var(--white);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .25s}
+  .popup-close:hover{background:var(--red)}
+  .popup h3{font-family:var(--font-cond);font-size:1.8rem;font-weight:800;text-transform:uppercase;margin-bottom:6px}
+  .popup h3 span{color:var(--green)}
+  .popup p{font-size:.9rem;color:var(--muted);margin-bottom:24px}
+  .popup-form{display:flex;flex-direction:column;gap:12px}
+  .popup-form input{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:13px 16px;color:var(--white);font-family:var(--font-body);font-size:.95rem;outline:none;transition:border-color .25s;width:100%}
+  .popup-form input:focus{border-color:var(--green)}
+
+  /* TICKER */
+  .ticker{background:var(--green);color:#0a0a0a;padding:9px 0;overflow:hidden;white-space:nowrap}
+  .ticker-inner{display:inline-flex;animation:ticker 20s linear infinite}
+  @keyframes ticker{to{transform:translateX(-50%)}}
+  .ticker-item{font-family:var(--font-cond);font-size:.9rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:0 40px}
+  .ticker-dot{color:rgba(0,0,0,.4)}
+
+  /* BEFORE/AFTER */
+  #transform{padding:120px 0;background:var(--dark)}
+  .transform-header{text-align:center;margin-bottom:64px}
+  .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ba-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative}
+  .ba-imgs{display:grid;grid-template-columns:1fr 1fr;height:220px}
+  .ba-img{width:100%;height:100%;object-fit:cover;filter:saturate(.7)}
+  .ba-img.after{filter:none}
+  .ba-divider{position:absolute;top:0;left:50%;bottom:0;width:2px;background:var(--green);z-index:1}
+  .ba-label{position:absolute;font-family:var(--font-cond);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:4px;top:8px;z-index:2}
+  .ba-label.before{left:8px;background:rgba(0,0,0,.7);color:var(--muted)}
+  .ba-label.after{right:8px;background:var(--green);color:#0a0a0a}
+  .ba-info{padding:16px}
+  .ba-name{font-family:var(--font-cond);font-size:1.05rem;font-weight:700;text-transform:uppercase}
+  .ba-result{font-size:.82rem;color:var(--green);margin-top:4px}
+
+  /* ── RESPONSIVE ───────────────────────────────── */
+  @media(max-width:1024px){
+    .trainers-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .gallery-masonry{columns:2}
+  }
+  @media(max-width:768px){
+    .nav-links,.nav-cta{display:none}
+    .nav-hamburger{display:flex}
+    .hero-h1{font-size:clamp(2.8rem,11vw,5rem)}
+    .hero-badge{display:none}
+    .about-grid,.why-grid,.contact-grid,.grid-2,.plans-grid{grid-template-columns:1fr}
+    .about-images{height:320px}
+    .about-img-main{width:80%;height:260px}
+    .about-img-sec{width:60%;height:180px}
+    .grid-3,.grid-4{grid-template-columns:1fr 1fr}
+    .trainers-grid{grid-template-columns:1fr 1fr}
+    .ba-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+    .footer-bottom{flex-direction:column;text-align:center}
+    .form-row{grid-template-columns:1fr}
+    .bmi-inputs{grid-template-columns:1fr}
+    .gallery-masonry{columns:1}
+    .why-features{grid-template-columns:1fr}
+    .about-features{grid-template-columns:1fr}
+    .hero-stats{gap:24px}
+    #hero{padding-top:80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#">DS <span>FITNESS</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#membership">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#trainers">Trainers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="btn btn-primary nav-cta" onclick="openPopup()">Join Now</button>
+      <div class="nav-hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#programs" onclick="toggleMenu()">Programs</a>
+  <a href="#membership" onclick="toggleMenu()">Pricing</a>
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#trainers" onclick="toggleMenu()">Trainers</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <button class="btn btn-primary" onclick="openPopup();toggleMenu()">Join Now</button>
+</div>
+
+<!-- ════ HERO ════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <!-- SVG Gradient background acting as gym visual -->
+    <svg width="100%" height="100%" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+      <defs>
+        <radialGradient id="rg1" cx="70%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#060809" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="rg2" cx="20%" cy="80%" r="50%">
+          <stop offset="0%" stop-color="#3efff3" stop-opacity="0.06"/>
+          <stop offset="100%" stop-color="#060809" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="#060809"/>
+      <rect width="100%" height="100%" fill="url(#rg1)"/>
+      <rect width="100%" height="100%" fill="url(#rg2)"/>
+      <!-- Abstract gym silhouette lines -->
+      <g opacity="0.07" stroke="#b5ff3e" stroke-width="1.5" fill="none">
+        <line x1="900" y1="100" x2="1200" y2="800"/>
+        <line x1="950" y1="80" x2="1250" y2="780"/>
+        <line x1="1000" y1="60" x2="1300" y2="760"/>
+        <line x1="850" y1="120" x2="1150" y2="820"/>
+        <circle cx="1100" cy="450" r="200"/>
+        <circle cx="1100" cy="450" r="250"/>
+        <circle cx="1100" cy="450" r="300"/>
+      </g>
+      <!-- Barbell icon -->
+      <g transform="translate(900,380)" opacity="0.12" fill="#b5ff3e">
+        <rect x="-180" y="-10" width="360" height="20" rx="8"/>
+        <rect x="-180" y="-35" width="30" height="70" rx="6"/>
+        <rect x="-140" y="-42" width="20" height="84" rx="6"/>
+        <rect x="130" y="-35" width="30" height="70" rx="6"/>
+        <rect x="120" y="-42" width="20" height="84" rx="6"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="container" style="position:relative;z-index:2;padding-top:100px;padding-bottom:80px">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span class="hero-eyebrow-text">Electronic City's #1 Premium Gym</span>
+      </div>
+      <h1 class="hero-h1">
+        Transform<br>Your Body.<br>
+        <span class="line2">Transform Your Life.</span>
+      </h1>
+      <p class="hero-sub">Strength. Discipline. Results. Join DS Fitness Ecity — where premium equipment meets expert coaching in the heart of Electronic City, Bengaluru.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="openPopup()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Join Now
+        </button>
+        <a href="#contact" class="btn btn-outline">
+          Book Free Trial →
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="134">0</span>+</div>
+          <div class="stat-label">Reviews</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4.<span>9</span> ★</div>
+          <div class="stat-label">Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="500">0</span>+</div>
+          <div class="stat-label">Members</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="8">0</span>+</div>
+          <div class="stat-label">Certified Trainers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-badge">
+    <div class="hero-badge-stars">★★★★★</div>
+    <div class="hero-badge-num">4.9</div>
+    <div class="hero-badge-label">Google Rating</div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <div class="scroll-text">Scroll</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">HIIT Training <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">CrossFit <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Kickboxing <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Personal Training <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Nutrition Consulting <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Cycling <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Online Classes <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Electronic City Bengaluru <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">HIIT Training <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">CrossFit <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Kickboxing <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Personal Training <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Nutrition Consulting <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Cycling <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Online Classes <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Electronic City Bengaluru <span class="ticker-dot">◆</span></span>
+  </div>
+</div>
+
+<!-- ════ ABOUT ════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal-left">
+        <!-- Placeholder gym images using SVG -->
+        <svg class="about-img-main" viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" style="background:#111820;border-radius:14px;width:72%;height:420px;position:absolute;top:0;left:0;">
+          <defs><linearGradient id="ag1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.15"/><stop offset="100%" stop-color="#060809" stop-opacity="0.9"/></linearGradient></defs>
+          <rect width="400" height="420" fill="#0d1117"/>
+          <rect width="400" height="420" fill="url(#ag1)"/>
+          <text x="50%" y="45%" text-anchor="middle" font-size="80" fill="rgba(181,255,62,0.2)">🏋️</text>
+          <text x="50%" y="62%" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="22" font-weight="700" fill="rgba(181,255,62,0.5)" letter-spacing="3">STRENGTH ZONE</text>
+        </svg>
+        <svg class="about-img-sec" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg" style="background:#111820;border-radius:14px;width:55%;height:280px;position:absolute;bottom:0;right:0;">
+          <defs><linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3efff3" stop-opacity="0.1"/><stop offset="100%" stop-color="#060809" stop-opacity="0.8"/></linearGradient></defs>
+          <rect width="300" height="280" fill="#0d1117"/>
+          <rect width="300" height="280" fill="url(#ag2)"/>
+          <text x="50%" y="45%" text-anchor="middle" font-size="64" fill="rgba(181,255,62,0.2)">🚴</text>
+          <text x="50%" y="66%" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="16" font-weight="700" fill="rgba(181,255,62,0.4)" letter-spacing="2">CARDIO ZONE</text>
+        </svg>
+        <div class="about-img-badge">
+          <div style="font-size:1.5rem">★</div>
+          <div>4.9 Rating</div>
+          <div style="font-size:.7rem;opacity:.7;font-weight:400">Google Reviews</div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <span class="section-tag">About Us</span>
+        <h2 class="section-title">More Than <span>Just A Gym</span></h2>
+        <p class="section-sub">DS Fitness Ecity is Electronic City's premier fitness destination — a space where passion meets performance. We combine premium equipment, expert guidance, and an electric atmosphere to fuel your best self.</p>
+        <div class="about-features">
+          <div class="about-feat"><div class="about-feat-icon">⚡</div> Premium Equipment</div>
+          <div class="about-feat"><div class="about-feat-icon">🏟️</div> Spacious Workout Zones</div>
+          <div class="about-feat"><div class="about-feat-icon">🤝</div> Inclusive Atmosphere</div>
+          <div class="about-feat"><div class="about-feat-icon">🌱</div> Beginner Friendly</div>
+          <div class="about-feat"><div class="about-feat-icon">💰</div> Affordable Memberships</div>
+          <div class="about-feat"><div class="about-feat-icon">🧼</div> Clean & Hygienic</div>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+          <a href="#membership" class="btn btn-primary">View Plans</a>
+          <a href="#contact" class="btn btn-outline">Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROGRAMS ════ -->
+<section id="programs">
+  <div class="container">
+    <div class="programs-header reveal">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Programs & <span>Services</span></h2>
+      <p class="section-sub" style="margin:12px auto 0">From high-intensity training to mindful movement — we have something for every goal.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card reveal delay-1">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">⚡</div>
+        <div class="prog-name">HIIT Training</div>
+        <div class="prog-desc">High-Intensity Interval Training designed to maximize calorie burn, boost metabolism, and build endurance in minimal time.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-2">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">🔥</div>
+        <div class="prog-name">CrossFit</div>
+        <div class="prog-desc">Functional movements performed at high intensity. Build strength, agility and stamina through varied WODs.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-3">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">🥊</div>
+        <div class="prog-name">Kickboxing</div>
+        <div class="prog-desc">Combine martial arts techniques with heart-pumping cardio. Tone your body and sharpen your reflexes.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-1">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">🏋️</div>
+        <div class="prog-name">Personal Training</div>
+        <div class="prog-desc">One-on-one sessions with certified trainers for a fully personalized workout and nutrition strategy.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-2">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">🥗</div>
+        <div class="prog-name">Nutrition Consulting</div>
+        <div class="prog-desc">Expert dietary guidance tailored to your goals — whether cutting, bulking, or improving overall health.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-3">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">🚴</div>
+        <div class="prog-name">Cycling</div>
+        <div class="prog-desc">Low-impact, high-energy indoor cycling classes that torch calories and strengthen your lower body.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-1">
+        <div class="prog-card-accent"></div>
+        <div class="prog-icon">💻</div>
+        <div class="prog-name">Online Classes</div>
+        <div class="prog-desc">Train anywhere, anytime with our live and on-demand virtual fitness sessions led by expert coaches.</div>
+        <div class="prog-arrow">→</div>
+      </div>
+      <div class="prog-card reveal delay-2" style="background:linear-gradient(135deg,rgba(181,255,62,.08),rgba(181,255,62,.02));border-color:rgba(181,255,62,.2)">
+        <div class="prog-card-accent" style="transform:scaleX(1)"></div>
+        <div class="prog-icon" style="background:rgba(181,255,62,.2)">🎯</div>
+        <div class="prog-name">Adult Sports</div>
+        <div class="prog-desc">Structured sports training programs for adults — improve athleticism, coordination, and have fun doing it.</div>
+        <div class="prog-arrow" style="opacity:1;transform:scale(1)">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY CHOOSE US ════ -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal-left">
+        <span class="section-tag">Why DS Fitness</span>
+        <h2 class="section-title">The <span>Difference</span> Is Clear</h2>
+        <p class="section-sub">Every detail of DS Fitness Ecity is designed to give you an edge — from the gear to the guidance.</p>
+        <div class="why-features" style="margin-top:32px">
+          <div class="why-feat">
+            <div class="why-feat-icon">⚙️</div>
+            <div class="why-feat-title">Top-Notch Equipment</div>
+            <div class="why-feat-desc">Industry-leading machines and free weights kept in perfect condition.</div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🏅</div>
+            <div class="why-feat-title">Certified Trainers</div>
+            <div class="why-feat-desc">8+ professionally certified coaches with diverse specializations.</div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">✨</div>
+            <div class="why-feat-title">Clean & Hygienic</div>
+            <div class="why-feat-desc">Daily deep-cleaning protocols ensure a safe, fresh environment.</div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🕐</div>
+            <div class="why-feat-title">Flexible Timings</div>
+            <div class="why-feat-desc">Open early morning to late night to fit your busy schedule.</div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">👥</div>
+            <div class="why-feat-title">Friendly Community</div>
+            <div class="why-feat-desc">An inclusive, positive vibe that motivates every member daily.</div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-icon">🎯</div>
+            <div class="why-feat-title">Personalized Guidance</div>
+            <div class="why-feat-desc">Custom fitness plans tailored to your body type and goals.</div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal-right">
+        <svg width="100%" height="100%" viewBox="0 0 500 520" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+          <defs>
+            <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.15"/>
+              <stop offset="100%" stop-color="#060809" stop-opacity="0.95"/>
+            </linearGradient>
+          </defs>
+          <rect width="500" height="520" fill="#0d1117"/>
+          <rect width="500" height="520" fill="url(#wg)"/>
+          <!-- Abstract workout figure -->
+          <circle cx="250" cy="150" r="45" fill="rgba(181,255,62,0.15)" stroke="rgba(181,255,62,0.3)" stroke-width="2"/>
+          <text x="250" y="163" text-anchor="middle" font-size="44" fill="rgba(181,255,62,0.3)">🏋️</text>
+          <rect x="160" y="220" width="180" height="8" rx="4" fill="rgba(181,255,62,0.2)"/>
+          <rect x="190" y="240" width="60" height="100" rx="8" fill="rgba(181,255,62,0.1)" stroke="rgba(181,255,62,0.2)" stroke-width="1"/>
+          <rect x="260" y="240" width="60" height="100" rx="8" fill="rgba(181,255,62,0.1)" stroke="rgba(181,255,62,0.2)" stroke-width="1"/>
+          <!-- Stat bars -->
+          <g transform="translate(60, 370)">
+            <text font-family="'Barlow Condensed',sans-serif" font-size="13" fill="rgba(181,255,62,0.6)" letter-spacing="2">STRENGTH</text>
+            <rect x="0" y="18" width="380" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+            <rect x="0" y="18" width="330" height="6" rx="3" fill="rgba(181,255,62,0.5)"/>
+          </g>
+          <g transform="translate(60, 400)">
+            <text font-family="'Barlow Condensed',sans-serif" font-size="13" fill="rgba(181,255,62,0.6)" letter-spacing="2">CARDIO</text>
+            <rect x="0" y="18" width="380" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+            <rect x="0" y="18" width="290" height="6" rx="3" fill="rgba(181,255,62,0.5)"/>
+          </g>
+          <g transform="translate(60, 430)">
+            <text font-family="'Barlow Condensed',sans-serif" font-size="13" fill="rgba(181,255,62,0.6)" letter-spacing="2">FLEXIBILITY</text>
+            <rect x="0" y="18" width="380" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+            <rect x="0" y="18" width="250" height="6" rx="3" fill="rgba(181,255,62,0.5)"/>
+          </g>
+        </svg>
+        <div class="why-visual-overlay"></div>
+        <div class="why-visual-text">
+          <div class="why-quote">"Where Champions Are Built Every Day"</div>
+          <div class="why-author">— DS Fitness Ecity, Est. Electronic City</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIALS ════ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-header reveal">
+      <span class="section-tag">Member Reviews</span>
+      <h2 class="section-title">What Our <span>Members Say</span></h2>
+    </div>
+  </div>
+  <div class="testi-wrap">
+    <div class="testi-track">
+      <!-- Set 1 -->
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Top-notch equipment and a clean, spacious layout make every workout a breeze. Best gym in Electronic City, no doubt!</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">R</div>
+          <div><div class="testi-name">Rahul S.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Great environment with top equipment at moderate price. The trainers are super helpful and motivating every single session.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Priya M.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Awesome atmosphere with good equipment for all workouts. Very inclusive and beginner-friendly. Highly recommend DS Fitness!</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">K</div>
+          <div><div class="testi-name">Karthik L.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Cost-effective and well-maintained. The staff is incredibly friendly and the community here genuinely pushes you to be better.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Anita K.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The HIIT classes are absolutely intense and fun. Lost 8kg in 3 months with the help of their expert trainers and nutrition plan.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">V</div>
+          <div><div class="testi-name">Vijay R.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I switched from 3 other gyms before finding DS Fitness. The space, equipment quality, and vibe are unmatched in Ecity.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sneha T.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <!-- Set 2 (mirror) -->
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Top-notch equipment and a clean, spacious layout make every workout a breeze. Best gym in Electronic City, no doubt!</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">R</div>
+          <div><div class="testi-name">Rahul S.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Great environment with top equipment at moderate price. The trainers are super helpful and motivating every single session.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Priya M.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Awesome atmosphere with good equipment for all workouts. Very inclusive and beginner-friendly. Highly recommend DS Fitness!</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">K</div>
+          <div><div class="testi-name">Karthik L.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">Cost-effective and well-maintained. The staff is incredibly friendly and the community here genuinely pushes you to be better.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Anita K.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">The HIIT classes are absolutely intense and fun. Lost 8kg in 3 months with the help of their expert trainers and nutrition plan.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">V</div>
+          <div><div class="testi-name">Vijay R.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <div class="testi-text">I switched from 3 other gyms before finding DS Fitness. The space, equipment quality, and vibe are unmatched in Ecity.</div>
+        <div class="testi-footer">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Sneha T.</div><div class="testi-stars">★★★★★</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MEMBERSHIP ════ -->
+<section id="membership">
+  <div class="container">
+    <div class="membership-header reveal">
+      <span class="section-tag">Membership Plans</span>
+      <h2 class="section-title">Simple, <span>Transparent</span> Pricing</h2>
+      <p class="section-sub" style="margin:12px auto 0">Premium fitness doesn't have to break the bank. Choose the plan that fits your lifestyle.</p>
+    </div>
+    <div class="plans-grid reveal">
+      <!-- Basic -->
+      <div class="plan-card">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price"><sup>₹</sup>899<sub>/mo</sub></div>
+        <div class="plan-period">Billed monthly</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Gym Floor Access</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Cardio Equipment</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Free Weights Zone</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Locker Room</div>
+          <div class="plan-feat disabled"><span class="plan-feat-x">✗</span> Group Classes</div>
+          <div class="plan-feat disabled"><span class="plan-feat-x">✗</span> Personal Training</div>
+          <div class="plan-feat disabled"><span class="plan-feat-x">✗</span> Nutrition Consulting</div>
+        </div>
+        <button class="btn btn-outline plan-cta" onclick="openPopup()">Get Started</button>
+      </div>
+      <!-- Pro -->
+      <div class="plan-card featured">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>₹</sup>1,499<sub>/mo</sub></div>
+        <div class="plan-period">Billed monthly</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Everything in Basic</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> All Group Classes</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> 2 PT Sessions/month</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Diet Plan Included</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Online Class Access</div>
+          <div class="plan-feat disabled"><span class="plan-feat-x">✗</span> Unlimited PT Sessions</div>
+          <div class="plan-feat disabled"><span class="plan-feat-x">✗</span> Priority Booking</div>
+        </div>
+        <button class="btn btn-primary plan-cta" onclick="openPopup()">Join Now →</button>
+      </div>
+      <!-- Elite -->
+      <div class="plan-card">
+        <div class="plan-name">Elite</div>
+        <div class="plan-price"><sup>₹</sup>2,499<sub>/mo</sub></div>
+        <div class="plan-period">Billed monthly</div>
+        <div class="plan-divider"></div>
+        <div class="plan-features">
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Everything in Pro</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Unlimited PT Sessions</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Priority Class Booking</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Monthly Body Assessment</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Custom Meal Planning</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Injury Prevention & Recovery</div>
+          <div class="plan-feat"><span class="plan-feat-check">✓</span> Transformation Tracking</div>
+        </div>
+        <button class="btn btn-outline plan-cta" onclick="openPopup()">Go Elite</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BEFORE/AFTER ════ -->
+<section id="transform">
+  <div class="container">
+    <div class="transform-header reveal">
+      <span class="section-tag">Real Results</span>
+      <h2 class="section-title">Member <span>Transformations</span></h2>
+      <p class="section-sub" style="margin:12px auto 0">Real people. Real results. Achieved right here at DS Fitness Ecity.</p>
+    </div>
+    <div class="ba-grid reveal">
+      <div class="ba-card">
+        <div class="ba-imgs">
+          <svg class="ba-img" viewBox="0 0 200 220"><rect width="200" height="220" fill="#1a1f2e"/><text x="50%" y="50%" text-anchor="middle" font-size="48" fill="rgba(255,255,255,0.15)" dy=".3em">🧍</text></svg>
+          <svg class="ba-img after" viewBox="0 0 200 220"><rect width="200" height="220" fill="#1a2a1a"/><text x="50%" y="50%" text-anchor="middle" font-size="48" fill="rgba(181,255,62,0.3)" dy=".3em">💪</text></svg>
+        </div>
+        <div class="ba-label before">Before</div>
+        <div class="ba-label after">After</div>
+        <div class="ba-divider"></div>
+        <div class="ba-info">
+          <div class="ba-name">Rajesh K.</div>
+          <div class="ba-result">Lost 18 kg in 5 months • HIIT + Nutrition Plan</div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-imgs">
+          <svg class="ba-img" viewBox="0 0 200 220"><rect width="200" height="220" fill="#1a1f2e"/><text x="50%" y="50%" text-anchor="middle" font-size="48" fill="rgba(255,255,255,0.15)" dy=".3em">🧍</text></svg>
+          <svg class="ba-img after" viewBox="0 0 200 220"><rect width="200" height="220" fill="#1a2a1a"/><text x="50%" y="50%" text-anchor="middle" font-size="48" fill="rgba(181,255,62,0.3)" dy=".3em">🏋️</text></svg>
+        </div>
+        <div class="ba-label before">Before</div>
+        <div class="ba-label after">After</div>
+        <div class="ba-divider"></div>
+        <div class="ba-info">
+          <div class="ba-name">Ananya S.</div>
+          <div class="ba-result">Gained 6 kg muscle in 4 months • Personal Training</div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-imgs">
+          <svg class="ba-img" viewBox="0 0 200 220"><rect width="200" height="220" fill="#1a1f2e"/><text x="50%" y="50%" text-anchor="middle" font-size="48" fill="rgba(255,255,255,0.15)" dy=".3em">🧍</text></svg>
+          <svg class="ba-img after" viewBox="0 0 200 220"><rect width="200" height="220" fill="#1a2a1a"/><text x="50%" y="50%" text-anchor="middle" font-size="48" fill="rgba(181,255,62,0.3)" dy=".3em">🥊</text></svg>
+        </div>
+        <div class="ba-label before">Before</div>
+        <div class="ba-label after">After</div>
+        <div class="ba-divider"></div>
+        <div class="ba-info">
+          <div class="ba-name">Mohan P.</div>
+          <div class="ba-result">Lost 12 kg in 3 months • CrossFit + Cycling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ GALLERY ════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <span class="section-tag">Our Space</span>
+      <h2 class="section-title">Inside <span>DS Fitness</span></h2>
+    </div>
+    <div class="gallery-masonry reveal">
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <rect width="400" height="300" fill="#111820"/>
+          <defs><radialGradient id="gg1" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.2"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="400" height="300" fill="url(#gg1)"/>
+          <text x="50%" y="42%" text-anchor="middle" font-size="72" fill="rgba(181,255,62,0.25)">🏋️</text>
+          <text x="50%" y="72%" text-anchor="middle" font-family="'Barlow Condensed'" font-size="18" fill="rgba(181,255,62,0.5)" letter-spacing="3" font-weight="700">WEIGHT TRAINING</text>
+        </svg>
+        <div class="gallery-item-overlay">⚡</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <rect width="400" height="220" fill="#0d1117"/>
+          <defs><radialGradient id="gg2" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#ff3e3e" stop-opacity="0.2"/><stop offset="100%" stop-color="#0d1117"/></radialGradient></defs>
+          <rect width="400" height="220" fill="url(#gg2)"/>
+          <text x="50%" y="45%" text-anchor="middle" font-size="64" fill="rgba(255,62,62,0.3)">🥊</text>
+          <text x="50%" y="76%" text-anchor="middle" font-family="'Barlow Condensed'" font-size="17" fill="rgba(255,255,255,0.4)" letter-spacing="3" font-weight="700">KICKBOXING</text>
+        </svg>
+        <div class="gallery-item-overlay">🥊</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <rect width="400" height="360" fill="#111820"/>
+          <defs><radialGradient id="gg3" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#3efff3" stop-opacity="0.2"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="400" height="360" fill="url(#gg3)"/>
+          <text x="50%" y="42%" text-anchor="middle" font-size="80" fill="rgba(62,255,243,0.2)">🚴</text>
+          <text x="50%" y="70%" text-anchor="middle" font-family="'Barlow Condensed'" font-size="18" fill="rgba(62,255,243,0.5)" letter-spacing="3" font-weight="700">CYCLING ZONE</text>
+        </svg>
+        <div class="gallery-item-overlay">🚴</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <rect width="400" height="250" fill="#0d1117"/>
+          <defs><radialGradient id="gg4" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.15"/><stop offset="100%" stop-color="#0d1117"/></radialGradient></defs>
+          <rect width="400" height="250" fill="url(#gg4)"/>
+          <text x="50%" y="44%" text-anchor="middle" font-size="68" fill="rgba(181,255,62,0.2)">🔥</text>
+          <text x="50%" y="74%" text-anchor="middle" font-family="'Barlow Condensed'" font-size="17" fill="rgba(181,255,62,0.5)" letter-spacing="3" font-weight="700">CROSSFIT</text>
+        </svg>
+        <div class="gallery-item-overlay">🔥</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <rect width="400" height="320" fill="#111820"/>
+          <defs><radialGradient id="gg5" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#ff9d3e" stop-opacity="0.2"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="400" height="320" fill="url(#gg5)"/>
+          <text x="50%" y="42%" text-anchor="middle" font-size="76" fill="rgba(255,157,62,0.25)">⚡</text>
+          <text x="50%" y="70%" text-anchor="middle" font-family="'Barlow Condensed'" font-size="18" fill="rgba(255,157,62,0.5)" letter-spacing="3" font-weight="700">HIIT CLASS</text>
+        </svg>
+        <div class="gallery-item-overlay">⚡</div>
+      </div>
+      <div class="gallery-item">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <rect width="400" height="200" fill="#0d1117"/>
+          <defs><radialGradient id="gg6" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.18"/><stop offset="100%" stop-color="#0d1117"/></radialGradient></defs>
+          <rect width="400" height="200" fill="url(#gg6)"/>
+          <text x="50%" y="44%" text-anchor="middle" font-size="56" fill="rgba(181,255,62,0.25)">👥</text>
+          <text x="50%" y="76%" text-anchor="middle" font-family="'Barlow Condensed'" font-size="17" fill="rgba(181,255,62,0.5)" letter-spacing="3" font-weight="700">GROUP CLASSES</text>
+        </svg>
+        <div class="gallery-item-overlay">👥</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TRAINERS ════ -->
+<section id="trainers">
+  <div class="container">
+    <div class="trainers-header reveal">
+      <span class="section-tag">Our Team</span>
+      <h2 class="section-title">Meet Your <span>Trainers</span></h2>
+      <p class="section-sub" style="margin:12px auto 0">Certified experts passionate about helping you achieve your fitness goals.</p>
+    </div>
+    <div class="trainers-grid reveal">
+      <div class="trainer-card">
+        <svg class="trainer-img" viewBox="0 0 250 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="250" height="220" fill="#111820"/>
+          <defs><radialGradient id="tg1" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.1"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="250" height="220" fill="url(#tg1)"/>
+          <circle cx="125" cy="85" r="40" fill="rgba(181,255,62,0.1)" stroke="rgba(181,255,62,0.2)" stroke-width="1"/>
+          <text x="125" y="98" text-anchor="middle" font-size="42" fill="rgba(181,255,62,0.3)">💪</text>
+          <text x="125" y="160" text-anchor="middle" font-family="'Barlow Condensed'" font-size="15" fill="rgba(255,255,255,0.2)" letter-spacing="2">HEAD TRAINER</text>
+        </svg>
+        <div class="trainer-info">
+          <div class="trainer-name">Deepak S.</div>
+          <div class="trainer-role">Head Trainer · CrossFit</div>
+          <div class="trainer-cert">NSCA-CPT Certified · 8 Years Exp.</div>
+          <div class="trainer-socials">
+            <a class="trainer-social" href="#">in</a>
+            <a class="trainer-social" href="#">ig</a>
+          </div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <svg class="trainer-img" viewBox="0 0 250 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="250" height="220" fill="#111820"/>
+          <defs><radialGradient id="tg2" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="#ff3e3e" stop-opacity="0.1"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="250" height="220" fill="url(#tg2)"/>
+          <circle cx="125" cy="85" r="40" fill="rgba(255,62,62,0.1)" stroke="rgba(255,62,62,0.2)" stroke-width="1"/>
+          <text x="125" y="98" text-anchor="middle" font-size="42" fill="rgba(255,62,62,0.3)">🥊</text>
+          <text x="125" y="160" text-anchor="middle" font-family="'Barlow Condensed'" font-size="15" fill="rgba(255,255,255,0.2)" letter-spacing="2">KICKBOXING</text>
+        </svg>
+        <div class="trainer-info">
+          <div class="trainer-name">Sneha R.</div>
+          <div class="trainer-role">Kickboxing Coach</div>
+          <div class="trainer-cert">WKF Certified · 5 Years Exp.</div>
+          <div class="trainer-socials">
+            <a class="trainer-social" href="#">in</a>
+            <a class="trainer-social" href="#">ig</a>
+          </div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <svg class="trainer-img" viewBox="0 0 250 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="250" height="220" fill="#111820"/>
+          <defs><radialGradient id="tg3" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="#3efff3" stop-opacity="0.1"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="250" height="220" fill="url(#tg3)"/>
+          <circle cx="125" cy="85" r="40" fill="rgba(62,255,243,0.1)" stroke="rgba(62,255,243,0.2)" stroke-width="1"/>
+          <text x="125" y="98" text-anchor="middle" font-size="42" fill="rgba(62,255,243,0.3)">🥗</text>
+          <text x="125" y="160" text-anchor="middle" font-family="'Barlow Condensed'" font-size="15" fill="rgba(255,255,255,0.2)" letter-spacing="2">NUTRITION</text>
+        </svg>
+        <div class="trainer-info">
+          <div class="trainer-name">Priya V.</div>
+          <div class="trainer-role">Nutrition Specialist</div>
+          <div class="trainer-cert">M.Sc Nutrition · 6 Years Exp.</div>
+          <div class="trainer-socials">
+            <a class="trainer-social" href="#">in</a>
+            <a class="trainer-social" href="#">ig</a>
+          </div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <svg class="trainer-img" viewBox="0 0 250 220" xmlns="http://www.w3.org/2000/svg">
+          <rect width="250" height="220" fill="#111820"/>
+          <defs><radialGradient id="tg4" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="#b5ff3e" stop-opacity="0.1"/><stop offset="100%" stop-color="#111820"/></radialGradient></defs>
+          <rect width="250" height="220" fill="url(#tg4)"/>
+          <circle cx="125" cy="85" r="40" fill="rgba(181,255,62,0.1)" stroke="rgba(181,255,62,0.15)" stroke-width="1"/>
+          <text x="125" y="98" text-anchor="middle" font-size="42" fill="rgba(181,255,62,0.25)">🏋️</text>
+          <text x="125" y="160" text-anchor="middle" font-family="'Barlow Condensed'" font-size="15" fill="rgba(255,255,255,0.2)" letter-spacing="2">STRENGTH</text>
+        </svg>
+        <div class="trainer-info">
+          <div class="trainer-name">Arjun M.</div>
+          <div class="trainer-role">Strength & Conditioning</div>
+          <div class="trainer-cert">ACSM Certified · 4 Years Exp.</div>
+          <div class="trainer-socials">
+            <a class="trainer-social" href="#">in</a>
+            <a class="trainer-social" href="#">ig</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BMI CALCULATOR ════ -->
+<section id="bmi">
+  <div class="container">
+    <div class="bmi-wrap">
+      <div class="reveal" style="text-align:center">
+        <span class="section-tag">Health Check</span>
+        <h2 class="section-title">BMI <span>Calculator</span></h2>
+        <p class="section-sub" style="margin:12px auto 0">Check your Body Mass Index and discover which program suits you best.</p>
+      </div>
+      <div class="bmi-card reveal">
+        <div class="bmi-inputs">
+          <div class="bmi-field">
+            <label>Weight (kg)</label>
+            <input type="number" id="bmi-weight" placeholder="e.g. 70" min="30" max="200"/>
+          </div>
+          <div class="bmi-field">
+            <label>Height (cm)</label>
+            <input type="number" id="bmi-height" placeholder="e.g. 175" min="100" max="250"/>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="calcBMI()">Calculate BMI</button>
+        <div class="bmi-result" id="bmi-result">
+          <div class="bmi-num" id="bmi-num">—</div>
+          <div class="bmi-category" id="bmi-cat">—</div>
+          <div class="bmi-tip" id="bmi-tip">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CONTACT ════ -->
+<section id="contact">
+  <div class="container">
+    <div style="margin-bottom:60px;text-align:center" class="reveal">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Visit Or <span>Contact Us</span></h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Address</div>
+              <div class="contact-value">No.25, VNR Complex, Saibaba Temple Street,<br>Electronic City Phase I, Bengaluru – 560105</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value"><a href="tel:+919686872014" style="color:var(--green)">+91 96868 72014</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⏰</div>
+            <div>
+              <div class="contact-label">Timings</div>
+              <div class="contact-value">Mon – Sat: 5:30 AM – 10:00 PM<br>Sunday: 6:00 AM – 8:00 PM</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <div class="contact-label">Online Classes</div>
+              <div class="contact-value">Available – contact us to enroll</div>
+            </div>
+          </div>
+        </div>
+        <a class="wa-btn" href="https://wa.me/919686872014?text=Hi%20DS%20Fitness%20Ecity!%20I%20want%20to%20know%20more%20about%20your%20plans." target="_blank" style="margin-top:28px;text-decoration:none">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.1234567890!2d77.6603!3d12.8402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b6b6b6b6b6b%3A0x0!2sDS%20Fitness%20Ecity!5e0!3m2!1sen!2sin!4v1234567890"
+            width="100%" height="220" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px">
+          <h3 style="font-family:var(--font-cond);font-size:1.5rem;font-weight:800;text-transform:uppercase;margin-bottom:6px">Send a Message</h3>
+          <p style="font-size:.85rem;color:var(--muted);margin-bottom:24px">We'll get back to you within a few hours.</p>
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-field">
+                <label>First Name</label>
+                <input type="text" placeholder="Rahul"/>
+              </div>
+              <div class="form-field">
+                <label>Last Name</label>
+                <input type="text" placeholder="Kumar"/>
+              </div>
+            </div>
+            <div class="form-field">
+              <label>Email</label>
+              <input type="email" placeholder="you@example.com"/>
+            </div>
+            <div class="form-field">
+              <label>Phone</label>
+              <input type="tel" placeholder="+91 98765 43210"/>
+            </div>
+            <div class="form-field">
+              <label>Message</label>
+              <textarea rows="4" placeholder="I'd like to book a free trial session..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="alert('Thanks! We\'ll reach out soon.')">Send Message →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#">DS <span>FITNESS</span></a>
+        <p>Electronic City's premier fitness destination. Premium equipment, certified trainers, and a community that pushes you to be your best.</p>
+        <div class="footer-socials">
+          <a class="footer-social" href="#" title="Instagram">ig</a>
+          <a class="footer-social" href="#" title="Facebook">fb</a>
+          <a class="footer-social" href="#" title="YouTube">yt</a>
+          <a class="footer-social" href="#" title="WhatsApp">wa</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="#about">About Us</a>
+          <a href="#programs">Programs</a>
+          <a href="#membership">Membership</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#trainers">Trainers</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programs</div>
+        <div class="footer-links">
+          <a href="#programs">HIIT Training</a>
+          <a href="#programs">CrossFit</a>
+          <a href="#programs">Kickboxing</a>
+          <a href="#programs">Personal Training</a>
+          <a href="#programs">Nutrition</a>
+          <a href="#programs">Cycling</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:+919686872014">+91 96868 72014</a>
+          <a href="#">Electronic City Phase I</a>
+          <a href="#">Bengaluru, KA 560105</a>
+          <a href="https://wa.me/919686872014">WhatsApp Us</a>
+        </div>
+        <div style="margin-top:20px">
+          <div style="font-size:.8rem;color:var(--muted);margin-bottom:8px;font-family:var(--font-cond);letter-spacing:.08em;text-transform:uppercase">Rating</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:var(--font-head);font-size:1.6rem;color:var(--green)">4.9</span>
+            <div>
+              <div style="color:var(--green);font-size:.8rem;letter-spacing:2px">★★★★★</div>
+              <div style="font-size:.72rem;color:var(--muted)">134 Google Reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <span>DS Fitness Ecity</span>. All rights reserved. Electronic City, Bengaluru.</div>
+      <div class="footer-copy">Made with ❤️ for a fitter Bengaluru</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ MEMBERSHIP POPUP ════ -->
+<div class="popup-overlay" id="popup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div style="font-size:2rem;margin-bottom:10px">🏋️</div>
+    <h3>Start Your <span>Fitness</span> Journey</h3>
+    <p>Fill in your details and our team will contact you within 24 hours with a personalized plan.</p>
+    <div class="popup-form">
+      <input type="text" placeholder="Your Full Name"/>
+      <input type="tel" placeholder="Phone Number"/>
+      <input type="email" placeholder="Email Address"/>
+      <select style="background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:13px 16px;color:var(--white);font-family:var(--font-body);font-size:.95rem;outline:none;width:100%;-webkit-appearance:none">
+        <option value="" style="background:#111820">Select Program of Interest</option>
+        <option style="background:#111820">HIIT Training</option>
+        <option style="background:#111820">CrossFit</option>
+        <option style="background:#111820">Kickboxing</option>
+        <option style="background:#111820">Personal Training</option>
+        <option style="background:#111820">Nutrition Consulting</option>
+        <option style="background:#111820">Cycling</option>
+        <option style="background:#111820">Online Classes</option>
+      </select>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitPopup()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Get My Free Trial
+      </button>
+    </div>
+    <div style="text-align:center;margin-top:16px;font-size:.78rem;color:var(--muted)">
+      🔒 No spam. We respect your privacy.
+    </div>
+  </div>
+</div>
+
+<!-- ════ JS ════ -->
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Popup
+  function openPopup() {
+    document.getElementById('popup').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    document.getElementById('popup').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('popup').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('popup')) closePopup();
+  });
+  function submitPopup() {
+    alert('🎉 Welcome to DS Fitness Ecity! Our team will call you shortly to schedule your free trial session.');
+    closePopup();
+  }
+
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
+
+  // Animated counters
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const duration = 1500;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+  // BMI Calculator
+  function calcBMI() {
+    const w = parseFloat(document.getElementById('bmi-weight').value);
+    const h = parseFloat(document.getElementById('bmi-height').value) / 100;
+    if (!w || !h || w < 1 || h < 0.5) {
+      alert('Please enter valid weight and height.');
+      return;
+    }
+    const bmi = (w / (h * h)).toFixed(1);
+    let cat, tip;
+    if (bmi < 18.5) {
+      cat = 'Underweight'; tip = 'Our nutrition & strength program can help you gain healthy muscle mass.';
+    } else if (bmi < 25) {
+      cat = 'Healthy Weight'; tip = 'Great! Our programs can help you maintain and enhance your fitness level.';
+    } else if (bmi < 30) {
+      cat = 'Overweight'; tip = 'Our HIIT & cardio programs combined with nutrition guidance can help you reach your goal.';
+    } else {
+      cat = 'Obese'; tip = 'Our certified trainers offer personalized programs to safely and effectively support your journey.';
+    }
+    document.getElementById('bmi-num').textContent = bmi;
+    document.getElementById('bmi-cat').textContent = cat;
+    document.getElementById('bmi-tip').textContent = tip;
+    document.getElementById('bmi-result').classList.add('show');
+  }
+
+  // Show popup after 8s (first visit feel)
+  setTimeout(() => {
+    if (!sessionStorage.getItem('popupShown')) {
+      openPopup();
+      sessionStorage.setItem('popupShown', '1');
+    }
+  }, 8000);
+</script>
+</body>
+</html>
